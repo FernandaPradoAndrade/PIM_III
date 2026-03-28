@@ -1,27 +1,118 @@
 using System;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.IO;
 
 public class Usuario{
     public string Email {get; set;}
     public string CPF {get; set;}
     public string Senha {get; set;}
+    public string NivelAcesso {get; set;}
 }
 
 class Program{
+    static string arquivo = "usuarios.json";
+    static List<Usuario> usuarios = CarregarUsuarios();
+
     static void Main(){
-        ValidarCPF();
+        MenuInicial();
     }
 
-    private static void ValidarCPF(){
-        Console.WriteLine("CPF para validar: ");
-        string cpf = LimparCpf(Console.ReadLine());
+    private static void MenuInicial(){
+        Console.WriteLine("Escolha a opção desejada: ");
+        Console.WriteLine("1- Cadastrar-se");
+        Console.WriteLine("2- Login");
+        string opcaoMenuInicial = Console.ReadLine();  
 
-        if (Validar(cpf)){
-            Console.WriteLine($"CPF válido: {cpf}");
+        if (opcaoMenuInicial == "1"){
+            CadastrarEstudante();
+        }  
+        else if (opcaoMenuInicial == "2"){
+            Login();            
         }
         else{
-            Console.WriteLine("CPF inválido");
+            Console.WriteLine("Opção inválida");
         }
+    }
+
+    private static void CadastrarEstudante()
+    {
+        Console.WriteLine("CPF: ");
+        string cpf = LimparCpf(Console.ReadLine());
+
+        if (!Validar(cpf))
+        {
+            Console.WriteLine("CPF inválido");
+            return;
+        }
+
+        foreach (var user in usuarios)
+        {
+            if(user.CPF == cpf)
+            {
+                Console.WriteLine("CPF já cadastrado");
+                return;
+            }
+        }
+
+        Console.WriteLine("Email: ");
+        string email = Console.ReadLine();
+
+        Console.WriteLine("Senha: ");
+        string senha = Console.ReadLine();
+
+        string nivelAcesso = "Estudante";
+
+        usuarios.Add(new Usuario
+        {
+            CPF = cpf,
+            Email = email,
+            Senha = senha,
+            NivelAcesso = nivelAcesso
+        });
+
+        SalvarUsuarios();
+
+        Console.WriteLine("Cadastro concluído com sucesso");
+    }
+
+    private static void Login()
+    {
+        Console.WriteLine("CPF: ");
+        string cpf = LimparCpf(Console.ReadLine());
+
+        Console.WriteLine("Senha: ");
+        string senha = Console.ReadLine();
+
+        foreach (var user in usuarios)
+        {
+            if (user.CPF == cpf && user.Senha == senha)
+            {
+                Console.WriteLine("Login concluído com sucesso");
+                return;
+            }
+        }
+
+        Console.WriteLine("CPF ou senha inválidos");
+
+    }
+
+    private static List<Usuario> CarregarUsuarios()
+    {
+        if (!File.Exists(arquivo))
+            return new List<Usuario>();
+
+        string json = File.ReadAllText(arquivo);
+        return JsonSerializer.Deserialize<List<Usuario>>(json) ?? new List<Usuario>();
+    }
+
+    private static void SalvarUsuarios()
+    {
+        string json = JsonSerializer.Serialize(usuarios, new JsonSerializerOptions{
+            WriteIndented = true});
+
+        File.WriteAllText(arquivo, json);
     }
 
     private static string LimparCpf(string cpf){

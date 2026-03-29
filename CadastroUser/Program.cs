@@ -1,8 +1,10 @@
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.IO;
+
+namespace CadastroUser;
 
 public class Usuario{
     public string Email {get; set;}

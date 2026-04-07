@@ -1,0 +1,14 @@
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\bin\Debug\net10.0\matricularAluno.exe
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\bin\Debug\net10.0\matricularAluno.deps.json
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\bin\Debug\net10.0\matricularAluno.runtimeconfig.json
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\bin\Debug\net10.0\matricularAluno.dll
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\bin\Debug\net10.0\matricularAluno.pdb
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\matricularAluno.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\matricularAluno.AssemblyInfoInputs.cache
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\matricularAluno.AssemblyInfo.cs
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\matricularAluno.csproj.CoreCompileInputs.cache
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\matricularAluno.dll
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\refint\matricularAluno.dll
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\matricularAluno.pdb
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\matricularAluno.genruntimeconfig.cache
+C:\Users\Camille Vitória\source\repos\matricularAluno\matricularAluno\obj\Debug\net10.0\ref\matricularAluno.dll

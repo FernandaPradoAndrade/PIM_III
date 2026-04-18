@@ -7,13 +7,20 @@ using System.IO;
 namespace CadastroUser;
 
 public class Usuario{
-    public string Email {get; set;}
-    public string CPF {get; set;}
-    public string Senha {get; set;}
-    public string NivelAcesso {get; set;}
+    public string Email {get; set;} = string.Empty;
+    public string CPF {get; set;} = string.Empty;
+    public string Senha {get; set;} = string.Empty;
+    public string NivelAcesso {get; set;} = string.Empty;
 }
 
 class Program{
+    private static Usuario admin = new Usuario{
+        CPF = "87888340008",
+        Email = "admin@gmail.com",
+        Senha = "1234",
+        NivelAcesso = "Admin"
+    };
+
     static string arquivo = "usuarios.json";
     static List<Usuario> usuarios = CarregarUsuarios();
 
@@ -107,6 +114,15 @@ class Program{
 
         string json = File.ReadAllText(arquivo);
         return JsonSerializer.Deserialize<List<Usuario>>(json) ?? new List<Usuario>();
+    }
+
+    static Program()
+    {
+        if (!usuarios.Exists(a => a.CPF == admin.CPF))
+        {
+            usuarios.Add(admin);
+            SalvarUsuarios();
+        }
     }
 
     private static void SalvarUsuarios()

@@ -11,6 +11,7 @@ public class Usuario{
     public string CPF {get; set;} = string.Empty;
     public string Senha {get; set;} = string.Empty;
     public string NivelAcesso {get; set;} = string.Empty;
+    public bool Atividade {get; set;} = true;
 }
 
 class Program{
@@ -38,7 +39,29 @@ class Program{
             CadastrarEstudante();
         }  
         else if (opcaoMenuInicial == "2"){
-            Login();            
+            Login();
+        }
+        else{
+            Console.WriteLine("Opção inválida");
+        }
+    }
+
+    private static void MenuAdmin()
+    {
+        Console.WriteLine("Escolha a opção desejada: ");
+        Console.WriteLine("1- Cadastrar Tutor");
+        Console.WriteLine("2- Editar usuário");
+        Console.WriteLine("3- Ativar/Desativar usuário");
+        string opcaoMenuAdmin = Console.ReadLine();  
+
+        if (opcaoMenuAdmin == "1"){
+            CadastrarTutor();
+        }  
+        else if (opcaoMenuAdmin == "2"){
+            EditarUsuario();
+        }
+        else if (opcaoMenuAdmin == "3"){
+            AtivarDesativarStatusUser();
         }
         else{
             Console.WriteLine("Opção inválida");
@@ -86,6 +109,30 @@ class Program{
         Console.WriteLine("Cadastro concluído com sucesso");
     }
 
+    private static void CadastrarTutor()
+    {
+        Console.WriteLine("CPF: ");
+        string cpf = LimparCpf(Console.ReadLine());
+
+        Console.WriteLine("Email: ");
+        string email = Console.ReadLine();
+
+        Console.WriteLine("Senha: ");
+        string senha = Console.ReadLine();
+
+        usuarios.Add(new Usuario
+        {
+            CPF = cpf,
+            Email = email,
+            Senha = senha,
+            NivelAcesso = "Tutor"
+        });
+
+        SalvarUsuarios();
+
+        Console.WriteLine("Tutor cadastrado com sucesso");
+    }
+
     private static void Login()
     {
         Console.WriteLine("CPF: ");
@@ -105,6 +152,17 @@ class Program{
 
         Console.WriteLine("CPF ou senha inválidos");
 
+    }
+
+    private static void AtivarDesativarStatusUser()
+    {
+        //terminar de criar efetivamente a ativacao, e desativacao do user
+        //quando desativado = bloqueio do login deste user
+    }
+
+    private static void EditarUsuario()
+    {
+        //terminar de criar a parte de editar o user
     }
 
     private static List<Usuario> CarregarUsuarios()

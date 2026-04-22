@@ -161,6 +161,12 @@ class Program{
             if (user.CPF == cpf && user.Senha == senha)
             {
                 Console.WriteLine("Login concluído com sucesso");
+
+                if (user.NivelAcesso == "Admin")
+                {
+                    MenuAdmin();
+                }
+                
                 return;
             }
         }

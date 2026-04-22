@@ -1,0 +1,9 @@
+[
+  {
+    "Email": "admin@gmail.com",
+    "CPF": "87888340008",
+    "Senha": "1234",
+    "NivelAcesso": "Admin",
+    "Atividade": true
+  }
+]

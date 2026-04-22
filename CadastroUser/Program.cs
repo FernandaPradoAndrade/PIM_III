@@ -114,6 +114,21 @@ class Program{
         Console.WriteLine("CPF: ");
         string cpf = LimparCpf(Console.ReadLine());
 
+        if (!Validar(cpf))
+        {
+            Console.WriteLine("CPF inválido");
+            return;
+        }
+
+        foreach (var user in usuarios)
+        {
+            if(user.CPF == cpf)
+            {
+                Console.WriteLine("CPF já cadastrado");
+                return;
+            }
+        }
+
         Console.WriteLine("Email: ");
         string email = Console.ReadLine();
 
